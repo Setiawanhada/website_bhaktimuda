@@ -47,7 +47,10 @@ class Informasi extends CI_Controller {
             'tanggal'   => date('Y-m-d')
         );
             // echo"<pre>";print_r($params);die();
-		$this->M_informasi->insert_informasi($params);
+        
+        
+        
+            $this->M_informasi->insert_informasi($params);
         
 	}
 }
