@@ -51,7 +51,11 @@
 	<script src="<?php echo base_url('js/admin/sb-admin.min.js') ?>"></script>
 	<!-- Demo scripts for this page-->
 	<script src="<?php echo base_url('js/admin/demo/datatables-demo.js') ?>"></script>
-	<script src="<?php echo base_url('js/admin/demo/chart-area-demo.js') ?>"></script>
+  <script src="<?php echo base_url('js/admin/demo/chart-area-demo.js') ?>"></script>
+  <script src="<?php echo base_url('assets/admin/plugins/dropify/dist/js/dropify.min.js') ?>"></script>
+  <script>
+	$('.dropify').dropify();
+</script>
 
 </body>
 

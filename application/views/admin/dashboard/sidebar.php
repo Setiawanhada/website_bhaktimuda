@@ -24,8 +24,8 @@
           <span>Presensi</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="login.html">Lihat Presensi</a>
-          <a class="dropdown-item" href="register.html">Tambah Presensi</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/presensi/view')?>">Lihat Presensi</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/presensi/add')?>">Tambah Presensi</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -34,8 +34,8 @@
           <span>Foto</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="login.html">Lihat Foto</a>
-          <a class="dropdown-item" href="register.html">Tambah Foto</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/foto/view')?>">Lihat Foto</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/foto/add')?>">Tambah Foto</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -44,8 +44,8 @@
           <span>Video</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="login.html">Lihat Video</a>
-          <a class="dropdown-item" href="register.html">Tambah Video</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/video/view')?>">Lihat Video</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/video/view')?>">Tambah Video</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -54,8 +54,8 @@
           <span>Pengurus</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="login.html">Lihat Pengurus</a>
-          <a class="dropdown-item" href="register.html">Tambah Pengurus</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/pengurus/view')?>">Lihat Pengurus</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/pengurus/add')?>">Tambah Pengurus</a>
         </div>
       </li>
     </ul>
