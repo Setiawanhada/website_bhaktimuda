@@ -5,7 +5,7 @@
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
-		<link rel="shortcut icon" href="img/fav.png">
+		<link href="<?php echo base_url('assets/public/images/fav.png') ?>" rel="shortcut icon">
 		<!-- Author Meta -->
 		<meta name="author" content="colorlib">
 		<!-- Meta Description -->
@@ -40,7 +40,7 @@
 			</div>
 			<nav class="navbar navbar-expand-lg  navbar-light">
 				<div class="container">
-					<a class="navbar-brand" href="index.php">
+					<a class="navbar-brand" href="<?php echo site_url('welcome/')?>">
 						<img src="<?php echo base_url('assets/public/images/bm.png')?>" width="30px" hight="30px" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
