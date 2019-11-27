@@ -45,7 +45,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="<?php echo site_url('admin/video/view')?>">Lihat Video</a>
-          <a class="dropdown-item" href="<?php echo site_url('admin/video/view')?>">Tambah Video</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/video/add')?>">Tambah Video</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -57,5 +57,21 @@
           <a class="dropdown-item" href="<?php echo site_url('admin/pengurus/view')?>">Lihat Pengurus</a>
           <a class="dropdown-item" href="<?php echo site_url('admin/pengurus/add')?>">Tambah Pengurus</a>
         </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user-tie"></i>
+          <span>Master</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="<?php echo site_url('admin/master/jabatan')?>">Master Jabatan</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/master/jenis_jabatan')?>">Master Jenis Jabatan</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('login/logout')?>">
+        <i class="fas fa-user-tie"></i>
+          <span>Logout</span>
+        </a>
       </li>
     </ul>

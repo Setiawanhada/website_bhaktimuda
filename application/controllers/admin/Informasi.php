@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Informasi extends CI_Controller {
+class Informasi extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -45,7 +45,7 @@ class Informasi extends CI_Controller {
         $isi = $this->input->post('isi', true);
         
 		$number = mt_rand(100, 999);
-		$prefix = 'PF';
+		$prefix = 'IF';
 		$generateId = $prefix.$number.date('Ymd');
 		$fileExt = pathinfo($_FILES["gambar"]["name"], PATHINFO_EXTENSION);
 		$gambar = $generateId.'.'.$fileExt;

@@ -10,20 +10,9 @@
 			<li class="breadcrumb-item active">Tambah Informasi</li>
 		</ol>
 		<div>
-		<?php 
-		$notif = $this->session->userdata('sess_notif');
-		if (!empty($notif['tipe'])){
-			 if($notif['tipe'] == 'Sukses'){
-				echo '<div class="alert alert-success" style="margin-top: 20px">
-				<label ><strong>'.$notif['tipe'].',</strong> '.$notif['pesan'].'</label>
-				</div>';
-			 }else{
-				echo '<div class="alert alert-danger" style="margin-top: 20px">
-				<label ><strong>'.$notif['tipe'].',</strong> '.$notif['pesan'].'</label>
-				</div>';
-			 }
-		} 
-		?>
+		<!-- load notif templates -->
+		<?php $this->load->view('admin/dashboard/notification') ?>
+		<!-- end load notif -->
 		</div>
 		<form action="<?php echo base_url('admin/informasi/add_process') ?>" method="post"
 			enctype="multipart/form-data">

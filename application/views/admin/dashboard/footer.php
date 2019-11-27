@@ -44,19 +44,48 @@
 	<!-- Core plugin JavaScript-->
 	<script src="<?php echo base_url('assets/admin/jquery-easing/jquery.easing.min.js') ?>"></script>
 	<!-- Page level plugin JavaScript-->
-	<script src="<?php echo base_url('assets/admin/chart.js/Chart.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/admin/datatables/jquery.dataTables.js') ?>"></script>
 	<script src="<?php echo base_url('assets/admin/datatables/dataTables.bootstrap4.js') ?>"></script>
 	<!-- Custom scripts for all pages-->
 	<script src="<?php echo base_url('js/admin/sb-admin.min.js') ?>"></script>
 	<!-- Demo scripts for this page-->
 	<script src="<?php echo base_url('js/admin/demo/datatables-demo.js') ?>"></script>
-  <script src="<?php echo base_url('js/admin/demo/chart-area-demo.js') ?>"></script>
   <script src="<?php echo base_url('assets/admin/plugins/dropify/dist/js/dropify.min.js') ?>"></script>
+  <script src="<?php echo base_url('assets/admin/plugins/select2/select2.full.min.js') ?>"></script>
   <script>
 	$('.dropify').dropify();
+  </script>
+  <script>
+  $(document).ready(function () {
+        $('select[name="kode_jabatan"]').on('change', function () {
+            var id = $(this).val();
+            console.log(id);
+            if (id) {
+                $.ajax({
+                    url: "<?php echo site_url('admin/pengurus/get_jenis_jabatan')?>" + '/' + encodeURI(id),
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $('select[name="kode_jenis_jabatan"]').append('<option value="' + value.kode_jenis_jabatan + '">' + value.nama_jenis_jabatan + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('select[name="kode_jenis_jabatan"]').empty();
+            }
+        });
+    });
 </script>
-
+<script type="text/javascript">
+    $(document).ready(function () {
+      $(".select2").select2({
+        minimumResultsForSearch: -1,
+        allowClear: true
+      });
+    });
+</script>
+<script>
 </body>
 
 </html>

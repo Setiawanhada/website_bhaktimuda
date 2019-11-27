@@ -23,7 +23,7 @@
 <!-- Custom styles for this template-->
 <link href="<?php echo base_url('css/admin/sb-admin.css') ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/admin/plugins/dropify/dist/css/dropify.min.css') ?>" rel="stylesheet">
-
+<link href="<?php echo base_url('assets/admin/plugins/select2/select2.min.css') ?>" rel="stylesheet">
 </head>
 
 <body id="page-top">
