@@ -29,7 +29,46 @@ class Presensi extends MY_Controller {
 		$this->load->view('admin/dashboard/footer');
         
     }
-    
+	
+	public function presensi_barcode($generateId)
+	{
+		// load view            
+        $img = $generateId.'.png';
+		$qrcode = $this->_code($generateId);
+		
+		$this->load->view('admin/dashboard/head');
+		$this->load->view('admin/dashboard/sidebar');
+		$data["rs_data"] = $this->M_presensi->get_presensi_byid($generateId);
+		$data['rs_img'] = $img;
+		$this->load->view('admin/presensi/barcode', $data);
+		$this->load->view('admin/dashboard/footer');
+    }
+	
+	public function tabel_rincian_presensi_barcode($id_presensi)
+	{
+		$data = $this->M_presensi->get_rincian_presensi_byid($id_presensi);
+		// $count = $this->M_presensi->get_count_rincian_presensi_byid($id_presensi);
+		// echo"<pre>";print_r($data);exit();
+		// load view 
+		$html = '';
+
+		$html .= '<table class="table table-responsive table-striped"';
+		$html .= '<thead>';
+			$html .= '<th>ID Anggota</th>';
+			$html .= '<th>Nama Anggota</th>';
+		$html .= '</thead>';
+        foreach ($data as $value) {
+			$html .= '<tr>';
+			 $html .= '<td>'.$value['id_anggota'].'</td>';
+			 $html .= '<td> nama</td>';
+			 $html .= '</tr>';
+			
+			// echo $value['id_anggota'];
+		  }
+		  $html .= '</table>';  
+		echo $html ;
+    }
+
     public function add()
 	{
         // load view
@@ -43,8 +82,8 @@ class Presensi extends MY_Controller {
 	{
 		$bulan = $this->input->post('bulan', true);
 		$tahun = $this->input->post('tahun', true);
-        $jml = $this->input->post('jml', true);
-        $link = $this->input->post('link', true);
+        // $jml = $this->input->post('jml', true);
+        // $link = $this->input->post('link', true);
         
 		$number = mt_rand(100, 999);
 		$prefix = 'PR';
@@ -54,15 +93,15 @@ class Presensi extends MY_Controller {
             'id_presensi'   => $generateId,
 			'bulan'     => $bulan,
 			'tahun'		=> $tahun,
-            'jml'     => $jml,
-            'link'       => $link,
+            // 'jml'     => $jml,
+            // 'link'       => $link,
             'tanggal'   => date('Y-m-d')
         );
-		
-		
-        $this->M_presensi->insert($params);
-		
-		$this->notif_msg('admin/informasi/add', 'Sukses', 'Data berhasil ditambahkan');
+		$this->M_presensi->insert('presensi',$params);
+		// generate code
+
+		redirect('admin/presensi/presensi_barcode/'.$generateId);
+		// $this->notif_msg('admin/informasi/add', 'Sukses', 'Data berhasil ditambahkan');
         
 	}
 	
@@ -147,6 +186,28 @@ class Presensi extends MY_Controller {
 			redirect($content);
 		}
 	}
+	function _code($id)
+    {
+        $this->load->library('ciqrcode'); //pemanggilan library QR CODE
 
+        $config['cacheable']    = true; //boolean, the default is true
+        $config['cachedir']     = './cache/'; //string, the default is application/cache/
+        $config['errorlog']     = './cache/'; //string, the default is application/logs/
+        $config['imagedir']     = './cache/'; //direktori penyimpanan qr code
+        $config['quality']      =  true; //boolean, the default is true
+        $config['size']         = '1024'; //interger, the default is 1024
+        $config['black']        = array(224,255,255); // array, default is array(255,255,255)
+        $config['white']        = array(70,130,180); // array, default is array(0,0,0)
+        $this->ciqrcode->initialize($config);
+
+        $image_name=$id.'.png'; //buat name dari qr code sesuai dengan nim
+
+        $params['data'] = $id; //data yang akan di jadikan QR CODE
+        $params['level'] = 'H'; //H=High
+        $params['size'] = 10;
+        $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/
+        $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+    }
+    
 	
 }

@@ -203,3 +203,14 @@
             return $nama_hari.','.$tgl.' '.$bulan.' '.$thn;
         }
     }
+    if (!function_exists('now')) {
+        /**
+         * get current date time
+         *
+         * @return	string
+         */
+        function now()
+        {
+            return date('Y-m-d H:i:s');
+        }
+    }

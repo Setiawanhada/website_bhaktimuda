@@ -86,6 +86,38 @@
     });
 </script>
 <script>
+  $(document).ready(function () {
+    $(".id_presensi").val({
+    generate_qr(<?=$rs_data['id_presensi']?>)      
+    });
+  });
+</script>
+<script>
+  function generate_qr(id) {
+    $.ajax({
+        url: "<?php echo site_url('admin/presensi/generate')?>",
+        type: "post",
+        data: {
+            id:id
+        },
+        dataType: 'json',
+        success: function(response) {
+            $("#qrimg").html(response.info);
+        }
+    });
+}; 
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      refreshTable();
+    });
+
+    function refreshTable(){
+        $('#tableHolder').load('<?php echo site_url('admin/presensi/tabel_rincian_presensi_barcode/')?><?= $rs_data['id_presensi']?>', function(){
+           setTimeout(refreshTable, 5000);
+        });
+    }
+</script>
 </body>
 
 </html>

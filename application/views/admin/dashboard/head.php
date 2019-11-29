@@ -22,7 +22,8 @@
 <link href="<?php echo base_url('assets/admin/datatables/dataTables.bootstrap4.css') ?>" rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="<?php echo base_url('css/admin/sb-admin.css') ?>" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/css/sb-admin-2.min.css"> -->
+  <link href="<?php echo base_url('css/admin/sb-admin.css') ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/admin/plugins/dropify/dist/css/dropify.min.css') ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/admin/plugins/select2/select2.min.css') ?>" rel="stylesheet">
 </head>

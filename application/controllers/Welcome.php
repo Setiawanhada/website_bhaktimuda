@@ -12,11 +12,11 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view("maintenance");
-		// $this->load->view("header");
-		// $data["rs_data"] = $this->M_welcome->get_informasi_dashboard();
-		// $this->load->view("body", $data);
-		// $this->load->view("footer");
+		// $this->load->view("maintenance");
+		$this->load->view("header");
+		$data["rs_data"] = $this->M_welcome->get_informasi_dashboard();
+		$this->load->view("body", $data);
+		$this->load->view("footer");
 	}
 
 	public function info()

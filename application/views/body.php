@@ -12,7 +12,7 @@
 					Official Website Resmi Karang Taruna Bhakti Muda.<br>
 					Wadah Organisasi Untuk Seluruh Pemuda di Posakan Barat Rt 02, Cawas, Klaten.
 				</p>
-				<a href="<?php echo site_url('welcome/presensi')?>" class="primary-btn2 header-btn text-uppercase">Lihat Daftar Hadir</a>
+				<a href="<?php echo site_url('login_anggota')?>" class="primary-btn2 header-btn text-uppercase">Lakukan Presensi</a>
 			</div>
 			<div class="col-lg-6">
 				<img class="img-fluid" src="<?php echo base_url('assets/public/images/bm.png')?>" width="80%" alt="">

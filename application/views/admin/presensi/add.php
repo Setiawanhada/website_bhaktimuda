@@ -36,16 +36,8 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label for="inputAddress">Tahun</label>
-				<input type="text" class="form-control" name="tahun" placeholder="Tahun Presensi">
+				<input type="text" class="form-control" name="tahun" placeholder="Tahun Presensi" required>
             </div>
-            <div class="form-group col-md-6">
-				<label for="inputAddress">Jumlah Hadir</label>
-				<input type="text" class="form-control" name="jml" placeholder="Jumlah Hadir">
-            </div>
-            <div class="form-group col-md-6">
-				<label for="inputAddress">Link Daftar Hadir</label>
-				<input type="text" class="form-control" name="link" placeholder="Link Daftar Hadir">
-			</div>
 			<div class="form-group" style="margin-left:200px">
 				<button type="submit" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</button>
 			</div>
