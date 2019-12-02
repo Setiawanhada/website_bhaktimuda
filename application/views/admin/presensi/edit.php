@@ -10,22 +10,9 @@
 			<li class="breadcrumb-item active">Edit Presensi</li>
 		</ol>
 		<div>
-		<?php 
-		$notif = $this->session->userdata('sess_notif');
-		if (!empty($notif['tipe'])){
-			 if($notif['tipe'] == 'Sukses'){
-				echo '<div class="alert alert-success" style="margin-top: 20px">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<label ><strong>'.$notif['tipe'].',</strong> '.$notif['pesan'].'</label>
-				</div>';
-			 }else{
-				echo '<div class="alert alert-danger" style="margin-top: 20px">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<label ><strong>'.$notif['tipe'].',</strong> '.$notif['pesan'].'</label>
-				</div>';
-			 }
-		} 
-		?>
+		<!-- load notif templates -->
+		<?php $this->load->view('admin/dashboard/notification') ?>
+		<!-- end load notif -->
 		</div>
 		<form action="<?php echo base_url('admin/presensi/edit_process') ?>" method="post"
 			enctype="multipart/form-data">
@@ -52,14 +39,6 @@
 				<label for="inputAddress">Tahun</label>
 				<input type="text" class="form-control" name="tahun" placeholder="Tahun Presensi" value="<?php echo $rs_edit['tahun'] ?>">
             </div>
-            <div class="form-group col-md-6">
-				<label for="inputAddress">Jumlah Hadir</label>
-				<input type="text" class="form-control" name="jml" placeholder="Jumlah Hadir" value="<?php echo $rs_edit['jml'] ?>">
-            </div>
-            <div class="form-group col-md-6">
-				<label for="inputAddress">Link Daftar Hadir</label>
-				<input type="text" class="form-control" name="link" placeholder="Link Daftar Hadir" value="<?php echo $rs_edit['link'] ?>">
-			</div>
 			<div class="form-group" style="margin-left:200px">
 				<button type="submit" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</button>
 				<a href="<?php echo site_url('admin/presensi/view')?>" class="btn btn-success btn-sm"><i class="fas fa-arrow-left"></i></i> Kembali</a>

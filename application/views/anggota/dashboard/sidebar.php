@@ -9,7 +9,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('login/logout')?>">
-        <i class="fas fa-user-tie"></i>
+        <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span>
         </a>
       </li>

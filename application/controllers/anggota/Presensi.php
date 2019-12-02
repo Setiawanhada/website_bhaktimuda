@@ -20,9 +20,17 @@ class Presensi extends CI_Controller {
 			'id_presensi'	=> $id_presensi,
             'id_anggota'	=> $id_anggota,
             'tanggal'   	=> now()
-        );
-		
-        $this->M_anggota->insert('presensi_rincian',$params);
+		);
+		$params_is_exist = array(
+			'id_presensi'	=> $id_presensi,
+			'id_anggota'	=> $id_anggota
+		);
+		$cek = $this->M_anggota->is_exist($params_is_exist);
+		if($cek == 0){
+			$this->M_anggota->insert('presensi_rincian',$params);
+		}else{
+			echo 'alert("Anda Sudah pre")';
+		}
 		echo $generateId;
 	}
 }

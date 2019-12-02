@@ -11,8 +11,6 @@ class Presensi extends MY_Controller {
 
 	public function view()
 	{
-		//delete session notif
-		// $this->session->unset_userdata('sess_notif');
         // load view 
         $data["rs_data"] = $this->M_presensi->get_all();
         $get_last_update = $this->M_presensi->get_all();
@@ -22,7 +20,8 @@ class Presensi extends MY_Controller {
 			$data['last_update'] = 'Tidak Ada';
 
 		}
-        // echo"<pre>";print_r($data);die();
+		$data["rs_jml"] = $this->M_presensi->get_count_rincian_presensi_byid();
+		// print_r($jml);die();
 		$this->load->view('admin/dashboard/head');
 		$this->load->view('admin/dashboard/sidebar');
 		$this->load->view('admin/presensi/view', $data);
@@ -38,32 +37,65 @@ class Presensi extends MY_Controller {
 		
 		$this->load->view('admin/dashboard/head');
 		$this->load->view('admin/dashboard/sidebar');
+		
 		$data["rs_data"] = $this->M_presensi->get_presensi_byid($generateId);
 		$data['rs_img'] = $img;
 		$this->load->view('admin/presensi/barcode', $data);
 		$this->load->view('admin/dashboard/footer');
+	}
+	
+	public function presensi_manual()
+	{
+		$id_presensi = $this->input->post('id_presensi', true);
+		$id_anggota = $this->input->post('id_anggota',true);
+
+		$number = mt_rand(100, 999);
+		$prefix = 'RI';
+		$generateId = $prefix.$number.date('Ymd');
+		//set params
+        $params = array(
+            'id_rincian'  	=> $generateId,
+			'id_presensi'	=> $id_presensi,
+            'id_anggota'	=> $id_anggota,
+            'tanggal'   	=> now()
+		);
+		$params_is_exist = array(
+			'id_presensi'	=> $id_presensi,
+			'id_anggota'	=> $id_anggota
+		);
+		$cek = $this->M_presensi->is_exist($params_is_exist);
+		if($cek == '0'){
+			$this->M_presensi->insert('presensi_rincian',$params);
+		}else{
+			// redirect('admin/presensi/presensi_barcode/'.$id_presensi.'');
+			echo "<script>alert('Gagal di tambahkan!');</script>";
+		}
+
+		redirect('admin/presensi/presensi_barcode/'.$id_presensi.'');
     }
 	
 	public function tabel_rincian_presensi_barcode($id_presensi)
 	{
 		$data = $this->M_presensi->get_rincian_presensi_byid($id_presensi);
-		// $count = $this->M_presensi->get_count_rincian_presensi_byid($id_presensi);
-		// echo"<pre>";print_r($data);exit();
 		// load view 
+		$no=1;
 		$html = '';
 
 		$html .= '<table class="table table-responsive table-striped"';
 		$html .= '<thead>';
-			$html .= '<th>ID Anggota</th>';
+			$html .= '<th>No</th>';
 			$html .= '<th>Nama Anggota</th>';
+			$html .= '<th>Waktu Presensi</th>';
+			$html .= '<th>Aksi</th>';
 		$html .= '</thead>';
         foreach ($data as $value) {
 			$html .= '<tr>';
-			 $html .= '<td>'.$value['id_anggota'].'</td>';
-			 $html .= '<td> nama</td>';
+			 $html .= '<td>'.$no.'</td>';
+			 $html .= '<td>'.$value['nama'].'</td>';
+			 $html .= '<td>'.$value['tanggal'].'</td>';
+			 $html .= '<td><a href="'.base_url('admin/presensi/delete_rincian_presensi/'.$value['id_presensi'].'/'.$value['id_rincian']).'"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button></a>'.'</td>';
 			 $html .= '</tr>';
-			
-			// echo $value['id_anggota'];
+			$no++;
 		  }
 		  $html .= '</table>';  
 		echo $html ;
@@ -82,8 +114,6 @@ class Presensi extends MY_Controller {
 	{
 		$bulan = $this->input->post('bulan', true);
 		$tahun = $this->input->post('tahun', true);
-        // $jml = $this->input->post('jml', true);
-        // $link = $this->input->post('link', true);
         
 		$number = mt_rand(100, 999);
 		$prefix = 'PR';
@@ -93,15 +123,12 @@ class Presensi extends MY_Controller {
             'id_presensi'   => $generateId,
 			'bulan'     => $bulan,
 			'tahun'		=> $tahun,
-            // 'jml'     => $jml,
-            // 'link'       => $link,
             'tanggal'   => date('Y-m-d')
         );
 		$this->M_presensi->insert('presensi',$params);
 		// generate code
 
 		redirect('admin/presensi/presensi_barcode/'.$generateId);
-		// $this->notif_msg('admin/informasi/add', 'Sukses', 'Data berhasil ditambahkan');
         
 	}
 	
@@ -128,6 +155,17 @@ class Presensi extends MY_Controller {
 		
 		$this->notif_msg('admin/presensi/view', 'Sukses', 'Data berhasil dihapus');
 		
+	}
+	
+	public function delete_rincian_presensi($id_presensi,$id_rincian)
+	{
+		$where = array(
+			'id_rincian'	=> $id_rincian
+		);
+        $this->M_presensi->delete('presensi_rincian',$where);
+		
+		redirect('admin/presensi/presensi_barcode/'.$id_presensi);
+		
     }
 	
 	public function edit($id_presensi)
@@ -138,7 +176,6 @@ class Presensi extends MY_Controller {
 		$this->load->view('admin/dashboard/head');
 		$this->load->view('admin/dashboard/sidebar');
 		$data["rs_edit"] = $this->M_presensi->get_presensi_byid($id_presensi);
-		// echo"<pre>";print_r($data);die();
 		$this->load->view('admin/presensi/edit', $data);
 		$this->load->view('admin/dashboard/footer');
         
@@ -155,9 +192,7 @@ class Presensi extends MY_Controller {
 		//set params
 		$params = array(
 			'bulan' 	=> $bulan,
-			'tahun'   	=> $tahun,
-			'jml'   	=> $jml,
-			'link' 		=> $link
+			'tahun'   	=> $tahun
 		);
 		$where = array(
 			'id_presensi'=>$id_presensi
@@ -168,24 +203,6 @@ class Presensi extends MY_Controller {
         
 	}
 
-	//kirim notifikasi
-	public function notif_msg($content, $tipe, $pesan)
-	{
-		// var_dump($content, $tipe, $pesan);die();
-		if (!empty($tipe) && !empty($pesan)) {
-			if ($tipe == 'Sukses') {
-				$tipe_notif = 'Sukses';
-			}else{
-				$tipe_notif = 'Error';
-			}
-			$data = [
-				'tipe'  => $tipe_notif,
-				'pesan' => $pesan
-			];
-			$this->session->set_userdata('sess_notif', $data);
-			redirect($content);
-		}
-	}
 	function _code($id)
     {
         $this->load->library('ciqrcode'); //pemanggilan library QR CODE

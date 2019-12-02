@@ -15,13 +15,12 @@
 				data-target="#largeModal">
         <i class="fas fa-qrcode"> Lakukan Presensi</i>
       </button>
-      <input type="text" class="id_anggota" id="id_anggota" value="<?php echo $this->session->userdata("id_anggota"); ?>">
 			<!-- Large Modal -->
 			<div id="largeModal" class="modal fade">
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content ">
 						<div class="modal-header pd-x-20">
-							<h4>SCAN BARCODE PRESENSI</h4>
+							<h4>SCAN BARCODE UNTUK PRESENSI</h4>
 							
 						</div>
 						<div class="modal-body pd-20 m-auto">

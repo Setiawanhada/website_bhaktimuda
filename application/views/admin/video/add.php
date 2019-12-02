@@ -22,7 +22,7 @@
             </div>
             <div class="form-group col-md-6">
 				<label for="inputAddress">Link Video</label>
-				<input type="text" class="form-control" name="link" placeholder="Link Video">
+				<input type="text" class="form-control" name="link" placeholder="https://www.youtube.com/watch?v=example">
 			</div>
 			<div class="form-group" style="margin-left:200px">
 				<button type="submit" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</button>

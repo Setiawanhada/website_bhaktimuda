@@ -9,23 +9,9 @@
 			</li>
 			<li class="breadcrumb-item active">Edit Jabatan</li>
 		</ol>
-		<div>
-		<?php 
-		$notif = $this->session->userdata('sess_notif');
-		if (!empty($notif['tipe'])){
-			 if($notif['tipe'] == 'Sukses'){
-				echo '<div class="alert alert-success" style="margin-top: 20px">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<label ><strong>'.$notif['tipe'].',</strong> '.$notif['pesan'].'</label>
-				</div>';
-			 }else{
-				echo '<div class="alert alert-danger" style="margin-top: 20px">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<label ><strong>'.$notif['tipe'].',</strong> '.$notif['pesan'].'</label>
-				</div>';
-			 }
-		} 
-		?>
+		<!-- load notif templates -->
+		<?php $this->load->view('admin/dashboard/notification') ?>
+		<!-- end load notif -->
 		</div>
 		<form action="<?php echo base_url('admin/master/jabatan/edit_process') ?>" method="post"
             enctype="multipart/form-data">

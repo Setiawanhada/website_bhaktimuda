@@ -18,7 +18,7 @@
 			enctype="multipart/form-data">
 			<div class="form-group col-md-6">
 				<label for="inputAddress">Judul Informasi</label>
-				<input type="text" class="form-control" name="judul" placeholder="Judul Informasi">
+				<input type="text" class="form-control" name="judul" placeholder="Judul Informasi" required>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="inputAddress2">Gambar</label>
@@ -26,7 +26,7 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label for="inputAddress2">Isi Informasi</label>
-				<textarea class="form-control" name="isi"></textarea>
+				<textarea class="form-control" name="isi" required></textarea>
 			</div>
 			<div class="form-group" style="margin-left:200px">
 				<button type="submit" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</button>

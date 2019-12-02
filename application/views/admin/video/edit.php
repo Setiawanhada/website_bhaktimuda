@@ -10,22 +10,9 @@
 			<li class="breadcrumb-item active">Edit Video</li>
 		</ol>
 		<div>
-		<?php 
-		$notif = $this->session->userdata('sess_notif');
-		if (!empty($notif['tipe'])){
-			 if($notif['tipe'] == 'Sukses'){
-				echo '<div class="alert alert-success" style="margin-top: 20px">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<label ><strong>'.$notif['tipe'].',</strong> '.$notif['pesan'].'</label>
-				</div>';
-			 }else{
-				echo '<div class="alert alert-danger" style="margin-top: 20px">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<label ><strong>'.$notif['tipe'].',</strong> '.$notif['pesan'].'</label>
-				</div>';
-			 }
-		} 
-		?>
+		<!-- load notif templates -->
+		<?php $this->load->view('admin/dashboard/notification') ?>
+		<!-- end load notif -->
 		</div>
 		<form action="<?php echo base_url('admin/video/edit_process') ?>" method="post"
 			enctype="multipart/form-data">
@@ -36,7 +23,7 @@
             </div>
             <div class="form-group col-md-6">
 				<label for="inputAddress">Link Video</label>
-				<input type="text" class="form-control" name="link" placeholder="Link Video"  value="<?php echo $rs_edit['link'] ?>">
+				<input type="text" class="form-control" name="link" placeholder="https://www.youtube.com/watch?v=example"  value="<?php echo $rs_edit['link'] ?>">
 			</div>
 			<div class="form-group" style="margin-left:200px">
 				<button type="submit" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</button>

@@ -11,8 +11,6 @@ class Jenis_jabatan extends MY_Controller {
 
 	public function index()
 	{
-		//delete session notif
-		// $this->session->unset_userdata('sess_notif');
         // load view 
         $data["rs_data"] = $this->M_jenis_jabatan->get_all();
         $get_last_update = $this->M_jenis_jabatan->get_all();
@@ -22,7 +20,6 @@ class Jenis_jabatan extends MY_Controller {
 			$data['last_update'] = 'Tidak Ada';
 
 		}
-        //  echo"<pre>";print_r($data);die();
 		$this->load->view('admin/dashboard/head');
 		$this->load->view('admin/dashboard/sidebar');
 		$this->load->view('admin/master/jenis_jabatan/view', $data);
@@ -120,25 +117,5 @@ class Jenis_jabatan extends MY_Controller {
 		$this->notif_msg('admin/master/jenis_jabatan/', 'Sukses', 'Data berhasil diedit');
         
 	}
-
-	//kirim notifikasi
-	public function notif_msg($content, $tipe, $pesan)
-	{
-		// var_dump($content, $tipe, $pesan);die();
-		if (!empty($tipe) && !empty($pesan)) {
-			if ($tipe == 'Sukses') {
-				$tipe_notif = 'Sukses';
-			}else{
-				$tipe_notif = 'Error';
-			}
-			$data = [
-				'tipe'  => $tipe_notif,
-				'pesan' => $pesan
-			];
-			$this->session->set_userdata('sess_notif', $data);
-			redirect($content);
-		}
-	}
-
 	
 }

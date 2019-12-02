@@ -214,3 +214,28 @@
             return date('Y-m-d H:i:s');
         }
     }
+
+    if (!function_exists('tahun')) {
+        /**
+         * get current date time
+         *
+         * @return	string
+         */
+        function tahun()
+        {
+            return date('Y');
+        }
+    }
+
+    if (!function_exists('hop')) {
+        /**
+         * get current date time
+         *
+         * @return	string
+         */
+        function hop()
+        {
+            $akhir = "...";
+            return $akhir;
+        }
+    }

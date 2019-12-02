@@ -36,12 +36,12 @@
         <?php foreach ($rs_data as $data): ?>
 			<div class="col-lg-3 col-md-6 single-blog">
 				<div class="thumb">
-					<img class="img-fluid" src="<?php echo base_url('upload/informasi/'.$data['gambar']) ?>" alt="">
+					<img class="img-fluid" style="height:220px;width:220px" src="<?php echo base_url('upload/informasi/'.$data['gambar']) ?>" alt="">
 				</div>
 				<p class="date"><?php echo mediumdate_indo($data['tanggal']) ?></p>
-				<h4><a href="#"><?php echo $data['judul'] ?></a></h4>
+				<h4><a href="#"><?php echo $data['judul']?></a></h4>
 				<p>
-                <?php echo $data['isi'] ?>
+                <?php echo $data['isi'] ?><?= hop()?>
 				</p>
 
             </div>

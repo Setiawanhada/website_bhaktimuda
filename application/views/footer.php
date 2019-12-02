@@ -6,7 +6,7 @@
 
 					
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright &copy; All rights reserved |  Bhakti Muda</p><br>
+          <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright &copy; All rights reserved |  Bhakti Muda <?= tahun()?></p><br>
           <p>with <a href="https://colorlib.com" target="_blank">Colorlib Template</a></p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						

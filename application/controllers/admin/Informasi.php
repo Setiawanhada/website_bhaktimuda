@@ -11,8 +11,6 @@ class Informasi extends MY_Controller {
 
 	public function view()
 	{
-		//delete session notif
-		// $this->session->unset_userdata('sess_notif');
         // load view 
         $data["rs_data"] = $this->M_informasi->get_all();
         $get_last_update = $this->M_informasi->get_all();
@@ -72,15 +70,12 @@ class Informasi extends MY_Controller {
 		$this->_uploadImage($generateId);
         $this->M_informasi->insert_informasi($params);
 		
-		// redirect('admin/informasi/add');
 		$this->notif_msg('admin/informasi/add', 'Sukses', 'Data berhasil ditambahkan');
         
 	}
 	
 	public function delete($kode_info)
 	{
-		//delete session notif
-		$this->session->unset_userdata('sess_notif');
         // load view
 		$this->load->view('admin/dashboard/head');
 		$this->load->view('admin/dashboard/sidebar');
@@ -180,25 +175,5 @@ class Informasi extends MY_Controller {
 		
 		return "default.jpg";
 	}
-
-	//kirim notifikasi
-	public function notif_msg($content, $tipe, $pesan)
-	{
-		// var_dump($content, $tipe, $pesan);die();
-		if (!empty($tipe) && !empty($pesan)) {
-			if ($tipe == 'Sukses') {
-				$tipe_notif = 'Sukses';
-			}else{
-				$tipe_notif = 'Error';
-			}
-			$data = [
-				'tipe'  => $tipe_notif,
-				'pesan' => $pesan
-			];
-			$this->session->set_userdata('sess_notif', $data);
-			redirect($content);
-		}
-	}
-
 	
 }

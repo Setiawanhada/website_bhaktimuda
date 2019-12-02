@@ -3,7 +3,7 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?php echo site_url('admin/dashboard_admin')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
@@ -60,7 +60,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user-tie"></i>
+        <i class="fas fa-database"></i>
           <span>Master</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
@@ -70,7 +70,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('login/logout')?>">
-        <i class="fas fa-user-tie"></i>
+        <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span>
         </a>
       </li>

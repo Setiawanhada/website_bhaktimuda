@@ -10,7 +10,7 @@
   <meta name="author" content="">
   <link href="<?php echo base_url('assets/public/images/fav.png') ?>" rel="shortcut icon">
 
-  <title>SB Admin - Login</title>
+  <title>SB Admin - Login Anggota</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url('assets/admin/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">

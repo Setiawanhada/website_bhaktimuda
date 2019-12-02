@@ -11,8 +11,6 @@ class Pengurus extends MY_Controller {
 
 	public function view()
 	{
-		//delete session notif
-		// $this->session->unset_userdata('sess_notif');
         // load view 
         $data["rs_data"] = $this->M_pengurus->get_all();
         $get_last_update = $this->M_pengurus->get_all();
@@ -175,7 +173,6 @@ class Pengurus extends MY_Controller {
 				'id_pengurus'	=> $id_pengurus
 			);
 		}
-		// echo"<pre>";print_r($where);die();
 		$this->M_pengurus->update('pengurus',$params,$where);
 		$this->notif_msg('admin/pengurus/view', 'Sukses', 'Data berhasil diedit');
         
@@ -207,25 +204,4 @@ class Pengurus extends MY_Controller {
 		
 		return "default.jpg";
 	}
-
-	//kirim notifikasi
-	public function notif_msg($content, $tipe, $pesan)
-	{
-		// var_dump($content, $tipe, $pesan);die();
-		if (!empty($tipe) && !empty($pesan)) {
-			if ($tipe == 'Sukses') {
-				$tipe_notif = 'Sukses';
-			}else{
-				$tipe_notif = 'Error';
-			}
-			$data = [
-				'tipe'  => $tipe_notif,
-				'pesan' => $pesan
-			];
-			$this->session->set_userdata('sess_notif', $data);
-			redirect($content);
-		}
-	}
-
-	
 }

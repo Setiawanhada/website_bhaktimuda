@@ -11,8 +11,6 @@ class Jabatan extends MY_Controller {
 
 	public function index()
 	{
-		//delete session notif
-		// $this->session->unset_userdata('sess_notif');
         // load view 
         $data["rs_data"] = $this->M_jabatan->get_all();
         $get_last_update = $this->M_jabatan->get_all();
@@ -22,7 +20,6 @@ class Jabatan extends MY_Controller {
 			$data['last_update'] = 'Tidak Ada';
 
 		}
-        //  echo"<pre>";print_r($data);die();
 		$this->load->view('admin/dashboard/head');
 		$this->load->view('admin/dashboard/sidebar');
 		$this->load->view('admin/master/jabatan/view', $data);
@@ -53,7 +50,6 @@ class Jabatan extends MY_Controller {
         $this->M_jabatan->insert('master_jabatan',$params);
 		
 		$this->notif_msg('admin/master/jabatan/', 'Sukses', 'Data berhasil ditambahkan');
-
         
 	}
 	

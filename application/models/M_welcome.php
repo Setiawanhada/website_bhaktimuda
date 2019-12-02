@@ -20,7 +20,7 @@ class M_welcome extends MY_model {
     }
 
     public function get_informasi(){
-        $sql = "SELECT *
+        $sql = "SELECT gambar,judul,TRUNCATE(isi,100),tanggal
         FROM info ORDER BY tanggal DESC
         ";
         //execute query
@@ -50,7 +50,7 @@ class M_welcome extends MY_model {
     }
 
     public function get_video(){
-        $sql = "SELECT *
+        $sql = "SELECT judul,SUBSTRING(link, 33) AS link
         FROM video ORDER BY tanggal DESC
         ";
         //execute query

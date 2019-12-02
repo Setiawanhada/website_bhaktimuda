@@ -10,7 +10,7 @@
   <meta name="author" content="">
   <link href="<?php echo base_url('assets/public/images/fav.png') ?>" rel="shortcut icon">
 
-  <title>Admin - Bhakti Muda</title>
+  <title>Anggota - Bhakti Muda</title>
 
   <!-- Bootstrap core CSS-->
 	<link href="<?php echo base_url('assets/admin/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">

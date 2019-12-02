@@ -27,7 +27,6 @@
 								<th>Bulan</th>
 								<th>Tahun</th>
 								<th>Jumlah Hadir</th>
-								<th>Link Daftar Hadir</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -36,8 +35,7 @@
 							<tr>
 								<td><?php echo $data['bulan'] ?></td>
 								<td><?php echo $data['tahun'] ?></td>
-								<td><?php echo $data['jml'] ?></td>
-								<td><?php echo $data['link'] ?></td>
+								<td><?php echo $data['jumlah'] ?></td>
 								<td><a class="btn btn-warning btn-sm"
                                     href="<?php echo site_url('admin/presensi/edit/'.$data['id_presensi'])?>"><i
 									class="fa fa-edit"></i> Edit</a>

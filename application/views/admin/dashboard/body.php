@@ -18,12 +18,11 @@
           <div class="card-body-icon">
             <i class="fas fa-fw fa-comments"></i>
           </div>
-          <div class="mr-5">26 New Messages!</div>
+          <div class="mr-5"><?= $rs_total_info;?></div>
         </div>
         <a class="card-footer text-white clearfix small z-1" href="#">
-          <span class="float-left">View Details</span>
+          <span class="float-left">Total Informasi</span>
           <span class="float-right">
-            <i class="fas fa-angle-right"></i>
           </span>
         </a>
       </div>
@@ -34,12 +33,11 @@
           <div class="card-body-icon">
             <i class="fas fa-fw fa-list"></i>
           </div>
-          <div class="mr-5">11 New Tasks!</div>
+          <div class="mr-5"><?= $rs_total_foto;?></div>
         </div>
         <a class="card-footer text-white clearfix small z-1" href="#">
-          <span class="float-left">View Details</span>
+          <span class="float-left">Total Foto</span>
           <span class="float-right">
-            <i class="fas fa-angle-right"></i>
           </span>
         </a>
       </div>
@@ -50,10 +48,10 @@
           <div class="card-body-icon">
             <i class="fas fa-fw fa-shopping-cart"></i>
           </div>
-          <div class="mr-5">123 New Orders!</div>
+          <div class="mr-5"><?= $rs_total_video;?></div>
         </div>
         <a class="card-footer text-white clearfix small z-1" href="#">
-          <span class="float-left">View Details</span>
+          <span class="float-left">Total Video</span>
           <span class="float-right">
             <i class="fas fa-angle-right"></i>
           </span>
@@ -69,7 +67,7 @@
           <div class="mr-5">13 New Tickets!</div>
         </div>
         <a class="card-footer text-white clearfix small z-1" href="#">
-          <span class="float-left">View Details</span>
+          <span class="float-left">Total Presensi</span>
           <span class="float-right">
             <i class="fas fa-angle-right"></i>
           </span>
